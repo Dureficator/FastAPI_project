@@ -1,4 +1,3 @@
-from pydantic import EmailStr
 from fastapi import APIRouter, Response, Depends
 
 from app.database import Users
@@ -41,8 +40,3 @@ async def logout_user(response: Response):
 @router.get('/me')
 async def read_users_me(curren_user: Users = Depends(get_current_user)):
     return curren_user
-
-
-@router.get('/')
-async def get_bookings_detail(email: EmailStr):
-    return await UsersService.find_one_or_none(email=email)

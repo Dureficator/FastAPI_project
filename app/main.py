@@ -1,16 +1,14 @@
-from fastapi import FastAPI, Query, Depends
-from typing import Optional
-from datetime import date
-from pydantic import BaseModel
-from dataclasses import dataclass
+from fastapi import FastAPI
 import uvicorn
 
-from app.router import router_bookings, router_users
+from app.router import router_bookings, router_users, router_hotels, router_rooms
 
 app = FastAPI()
 
 app.include_router(router_users)
 app.include_router(router_bookings)
+app.include_router(router_hotels)
+app.include_router(router_rooms)
 
 
 if __name__ == "__main__":
